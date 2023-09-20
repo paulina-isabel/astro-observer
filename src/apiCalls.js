@@ -17,4 +17,4 @@ const getData = async(url) => {
   return data
 }
 
-export default getData
+export default getData;
