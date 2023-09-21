@@ -26,7 +26,7 @@ function App() {
       <NavBar />
       <AllSigns />
     </div>
-  );
+  )
 }
 
 export default App;

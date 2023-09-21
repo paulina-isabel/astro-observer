@@ -80,21 +80,17 @@ const AllSigns = () => {
     return (
       <SignCard
         image={sign.image}
-        sign={sign.sign}
         id={sign.id}
         key={sign.id}
       />
     )
   })
 
-  console.log(signDisplay)
-
   return (
-    <div>
-
+    <div className='all-signs-wrapper'>
       {signDisplay}
     </div>
   )
 }
 
-export default AllSigns
+export default AllSigns;
