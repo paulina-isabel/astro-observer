@@ -28,10 +28,8 @@ const TodaysReading = () => {
     fetchData();
   }, [selectedTimePeriod]);
 
-  console.log(selectedTimePeriod)
-
   return (
-    <div className='todays-reading-card'>
+    <div className='todays-reading'>
 
       <h3>Select a Time Period to See Reading for {sign}:</h3>
 
@@ -57,9 +55,11 @@ const TodaysReading = () => {
         />
       </div>
 
+      <h3>
+        {selectedTimePeriod}
+      </h3>
       <p className='prediction'>
         {prediction}
-        {/* Your friendly, kind and noble nature brings people close to you. You won't have to take any great efforts to do this.The love and joy that you would see in your partner's eyes would make today very happy and peaceful for you too. As it is their happiness that makes you happy.You have a forceful personality that can easily overpower any enemy that you might have. But try and restrain showing it in public today.Try not to get affected by small issues. It will only drain you emotionally and mentally. Spend some time to refresh you mind and body. */}
       </p>
 
     </div>

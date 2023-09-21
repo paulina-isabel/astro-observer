@@ -1,6 +1,13 @@
-.todays-reading-card {
+.todays-reading {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.prediction {
   width: 50vw;
-  text-align: center;
 }
 
 .time-period-img {

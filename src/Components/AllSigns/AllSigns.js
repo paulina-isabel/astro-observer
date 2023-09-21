@@ -17,7 +17,7 @@ const AllSigns = () => {
   return (
     <div className='home-page'>
       <h2>
-        Welcome to Astro Observer! Please select your star sign. 
+        Welcome! Please select your star sign to begin. 
       </h2>
       <div className='signs-wrapper'>
         {signDisplay}
