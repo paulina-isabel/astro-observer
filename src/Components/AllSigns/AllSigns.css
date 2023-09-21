@@ -1,5 +1,6 @@
-.al-signs-wrapper {
+.all-signs-wrapper {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  width: 50vw;
+  align-items: center;
 }
