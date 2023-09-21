@@ -10,9 +10,9 @@ import sagittarius from '../../images/sagittarius.png';
 import capricorn from '../../images/capricorn.png';
 import aquarius from '../../images/aquarius.png';
 import pisces from '../../images/pisces.png';
+import SignCard from '../SignCard/SignCard';
 
 const AllSigns = () => {
-
   const allSigns = [
     {
       sign: 'aries',
@@ -29,7 +29,6 @@ const AllSigns = () => {
       image: gemini,
       id: 3
     },
-
     {
       sign: 'cancer',
       image: cancer,
@@ -38,7 +37,25 @@ const AllSigns = () => {
     //  'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
   ]
 
+  const signDisplay = allSigns.map(sign => {
+    return (
+      <SignCard
+        image={sign.image}
+        sign={sign.sign}
+        id={sign.id}
+        key={sign.id}
+      />
+    )
+  })
 
+  console.log(signDisplay)
+
+  return (
+    <div>
+
+      {signDisplay}
+    </div>
+  )
 }
 
 export default AllSigns
