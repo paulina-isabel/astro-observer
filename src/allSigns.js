@@ -13,65 +13,65 @@ import pisces from './images/pisces.png';
 
 const allSigns = [
   {
-    sign: 'aries',
+    sign: 'Aries',
     image: aries,
     id: 1
   },
   {
-    sign: 'taurus',
+    sign: 'Taurus',
     image: taurus,
     id: 2
   },
   {
-    sign: 'gemini',
+    sign: 'Gemini',
     image: gemini,
     id: 3
   },
   {
-    sign: 'cancer',
+    sign: 'Cancer',
     image: cancer,
     id: 4
   },
   {
-    sign: 'leo',
+    sign: 'Leo',
     image: leo,
     id: 5
   },
   {
-    sign: 'virgo',
+    sign: 'Virgo',
     image: virgo,
     id: 6
   },
   {
-    sign: 'libra',
+    sign: 'Libra',
     image: libra,
     id: 7
   },
   {
-    sign: 'scorpio',
+    sign: 'Scorpio',
     image: scorpio,
     id: 8
   },
   {
-    sign: 'sagittarius',
+    sign: 'Sagittarius',
     image: sagittarius,
     id: 9
   },
   {
-    sign: 'capricorn',
+    sign: 'Capricorn',
     image: capricorn,
     id: 10
   },
   {
-    sign: 'aquarius',
+    sign: 'Aquarius',
     image: aquarius,
     id: 11
   },
   {
-    sign: 'pisces',
+    sign: 'Pisces',
     image: pisces,
     id: 12
   }
 ];
 
-export default allSigns
+export default allSigns;
