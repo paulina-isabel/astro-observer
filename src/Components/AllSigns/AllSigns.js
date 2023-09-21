@@ -33,9 +33,48 @@ const AllSigns = () => {
       sign: 'cancer',
       image: cancer,
       id: 4
+    },
+    {
+      sign: 'leo',
+      image: leo,
+      id: 5
+    },
+    {
+      sign: 'virgo',
+      image: virgo,
+      id: 6
+    },
+    {
+      sign: 'libra',
+      image: libra,
+      id: 7
+    },
+    {
+      sign: 'scorpio',
+      image: scorpio,
+      id: 8
+    },
+    {
+      sign: 'sagittarius',
+      image: sagittarius,
+      id: 9
+    },
+    {
+      sign: 'capricorn',
+      image: capricorn,
+      id: 10
+    },
+    {
+      sign: 'aquarius',
+      image: aquarius,
+      id: 11
+    },
+    {
+      sign: 'pisces',
+      image: pisces,
+      id: 12
     }
-    //  'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
-  ]
+  ];
 
   const signDisplay = allSigns.map(sign => {
     return (

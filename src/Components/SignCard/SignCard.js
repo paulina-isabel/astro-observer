@@ -1,6 +1,6 @@
 const SignCard = ({ image, sign, id }) => {
   return (
-    <div>
+    <div className="sign-card">
       <img src={image} />
     </div>
   )
