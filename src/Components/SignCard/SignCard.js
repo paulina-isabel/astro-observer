@@ -6,7 +6,7 @@ const SignCard = ({ image, signName }) => {
   return (
     <Link to={`/${signName}`}>
       <div className="sign-card">
-        <img src={image} className='sign-image'/>
+        <img src={image} className='sign-image' alt={signName}/>
       </div>
     </Link>
   )
