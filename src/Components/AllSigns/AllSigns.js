@@ -9,7 +9,7 @@ const AllSigns = ({ selectedSign }) => {
         image={sign.image}
         id={sign.id}
         key={sign.id}
-        selectedSign={selectedSign}
+        signName={sign.sign}
       />
     )
   })
