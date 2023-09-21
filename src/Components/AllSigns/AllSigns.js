@@ -2,13 +2,14 @@ import './AllSigns.css'
 import allSigns from '../../allSigns';
 import SignCard from '../SignCard/SignCard';
 
-const AllSigns = () => {
+const AllSigns = ({ selectedSign }) => {
   const signDisplay = allSigns.map(sign => {
     return (
       <SignCard
         image={sign.image}
         id={sign.id}
         key={sign.id}
+        selectedSign={selectedSign}
       />
     )
   })
@@ -18,6 +19,6 @@ const AllSigns = () => {
       {signDisplay}
     </div>
   )
-}
+};
 
 export default AllSigns;

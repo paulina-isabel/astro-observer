@@ -1,12 +1,14 @@
 import './App.css';
 import NavBar from '../NavBar/NavBar';
 import AllSigns from '../AllSigns/AllSigns';
+import TodaysReading from '../TodaysReading/TodaysReading';
 import { useEffect, useState } from 'react';
 import getData from '../../apiCalls';
-import { Routes, Route, Switch } from 'react-router-dom';
-
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
+
+  const [selectedSign, setSelectedSign] = useState('aries')
 
   // useEffect(() => {
   //   const apiCall = async() => {
@@ -26,9 +28,9 @@ function App() {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path='/' element={<AllSigns />} />
+        <Route path='/' element={<AllSigns selectedSign={selectedSign}/>} />
+        <Route path='/:sign' element={<TodaysReading />} />
       </Routes>
-        
     </div>
   )
 }
