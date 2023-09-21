@@ -3,6 +3,7 @@ import NavBar from '../NavBar/NavBar';
 import AllSigns from '../AllSigns/AllSigns';
 import { useEffect, useState } from 'react';
 import getData from '../../apiCalls';
+import { Routes, Route, Switch } from 'react-router-dom';
 
 
 function App() {
@@ -24,7 +25,10 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <AllSigns />
+      <Routes>
+        <Route path='/' element={<AllSigns />} />
+      </Routes>
+        
     </div>
   )
 }
