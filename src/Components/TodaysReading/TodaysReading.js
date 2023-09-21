@@ -8,7 +8,6 @@ import getData from '../../apiCalls';
 
 const TodaysReading = () => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState('');
-  const [selectedSign, setSelectedSign] = useState('');
   const [prediction, setPrediction] = useState('')
   
   const { sign } = useParams();
@@ -25,8 +24,6 @@ const TodaysReading = () => {
         }
       }
     };
-
-    setSelectedSign(sign);
 
     fetchData();
   }, [selectedTimePeriod]);
