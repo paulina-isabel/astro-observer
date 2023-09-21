@@ -8,7 +8,6 @@ import { Routes, Route } from 'react-router-dom';
 
 function App() {
 
-  const [selectedSign, setSelectedSign] = useState('aries')
 
   // useEffect(() => {
   //   const apiCall = async() => {
@@ -28,7 +27,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path='/' element={<AllSigns selectedSign={selectedSign}/>} />
+        <Route path='/' element={<AllSigns />} />
         <Route path='/:sign' element={<TodaysReading />} />
       </Routes>
     </div>
