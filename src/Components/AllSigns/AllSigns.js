@@ -15,9 +15,13 @@ const AllSigns = () => {
   })
 
   return (
-    <div className='all-signs-wrapper'>
-      Welcome to Astro Observer! Please select the time period you wish to see, then click on your star sign to see a reading. 
-      {signDisplay}
+    <div className='home-page'>
+      <h2>
+        Welcome to Astro Observer! Please select your star sign. 
+      </h2>
+      <div className='signs-wrapper'>
+        {signDisplay}
+      </div>
     </div>
   )
 };

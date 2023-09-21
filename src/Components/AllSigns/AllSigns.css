@@ -1,4 +1,11 @@
-.all-signs-wrapper {
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signs-wrapper {
   display: flex;
   flex-wrap: wrap;
   width: 50vw;
