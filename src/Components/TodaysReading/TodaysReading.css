@@ -1,16 +1,20 @@
 .todays-reading {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
   align-items: center;
-  /* justify-content: center; */
 }
 
-.prediction {
+.reading {
   width: 50vw;
+  background-color: #f4e6fc;
 }
 
 .time-period-img {
   height: 20px;
   padding: 10px;
+  cursor: pointer;
+}
+
+.favorite-button {
+  height: 30px;
 }
