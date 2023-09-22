@@ -10,6 +10,7 @@ import unfavorite from '../.././images/unfavorite.png';
 
 import getData from '../../apiCalls';
 
+import ReadingCard from '../ReadingCard/ReadingCard';
 import Error from '../Error/Error';
 
 const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }) => {
@@ -23,6 +24,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
     const fetchData = async () => {
       try {
         const data = await getData(`https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=${sign}&timePeriod=${selectedTimePeriod}`);
+        console.log(data.prediction)
         setReading(data.prediction)
       } catch (error) {
         if (error instanceof Error) {
@@ -40,6 +42,8 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
   };
 
   const isFavorite = checkFavorites(reading, favoriteReadings)
+
+  console.log(reading)
 
   return (
     <div>
@@ -73,7 +77,6 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
         <h3>
           {selectedTimePeriod}
         </h3>
-
         
         {reading.length ? 
           <div className='reading'>
@@ -82,9 +85,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
             </p>
             <img src={isFavorite ? unfavorite : favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
           </div> : <p>Make a selection above to see your reading!</p> }
-
       </div>}
-
 
     </div>
   )
