@@ -10,7 +10,7 @@ import getData from '../../apiCalls';
 
 const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }) => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState('');
-  const [reading, setReading] = useState('this is a test')
+  const [reading, setReading] = useState('this is a dummy reading')
   
   const { sign } = useParams();
 
@@ -70,7 +70,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
       </h3>
       <div className='reading'>
         <p>
-          Your friendly, kind and noble nature brings people close to you. You won't have to take any great efforts to do this.The love and joy that you would see in your partner's eyes would make toda
+          {/* Your friendly, kind and noble nature brings people close to you. You won't have to take any great efforts to do this.The love and joy that you would see in your partner's eyes would make toda */}
           {reading}
         </p>
         <img src={isFavorite ? unfavorite : favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>

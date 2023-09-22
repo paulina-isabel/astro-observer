@@ -36,7 +36,7 @@ function App() {
       <Routes>
         <Route path='/' element={<AllSigns />} />
         <Route path='/:sign' element={<TodaysReading addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} favoriteReadings={favoriteReadings}/>} />
-        <Route path='/favorites' element={<Favorites favoriteReadings={favoriteReadings} />} />
+        <Route path='/favorites' element={<Favorites favoriteReadings={favoriteReadings} removeFromFavorites={removeFromFavorites}/>} />
       </Routes>
     </div>
   )
