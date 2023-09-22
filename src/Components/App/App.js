@@ -2,6 +2,7 @@ import './App.css';
 import NavBar from '../NavBar/NavBar';
 import AllSigns from '../AllSigns/AllSigns';
 import TodaysReading from '../TodaysReading/TodaysReading';
+import Favorites from '../Favorites/Favorites';
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -34,6 +35,7 @@ function App() {
       <Routes>
         <Route path='/' element={<AllSigns />} />
         <Route path='/:sign' element={<TodaysReading addToFavorites={addToFavorites} favoriteReadings={favoriteReadings}/>} />
+        <Route path='/favorites' element={<Favorites favoriteReadings={favoriteReadings} />} />
       </Routes>
     </div>
   )
