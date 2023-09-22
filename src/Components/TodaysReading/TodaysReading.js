@@ -73,7 +73,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
           Your friendly, kind and noble nature brings people close to you. You won't have to take any great efforts to do this.The love and joy that you would see in your partner's eyes would make toda
           {reading}
         </p>
-        <img src={favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
+        <img src={isFavorite ? unfavorite : favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
       </div>
 
     </div>
