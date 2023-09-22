@@ -1,5 +1,5 @@
 import './AllSigns.css'
-import allSigns from '../../allSigns';
+import allSigns from '../../signs';
 import SignCard from '../SignCard/SignCard';
 
 const AllSigns = () => {

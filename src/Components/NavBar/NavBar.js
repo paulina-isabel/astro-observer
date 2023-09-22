@@ -8,6 +8,9 @@ const NavBar = () => {
       <Link to={'/'}>
         <img src={headerimg} alt='title' className='header'/>
       </Link>
+      <Link to={'/favorites'}>
+        favorites page
+      </Link>
     </div>
   );
 };
