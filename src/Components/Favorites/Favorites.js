@@ -30,6 +30,7 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
 
   return (
     <div className="favorites-wrapper">
+      <h2>Favorite Readings</h2>
       { favoritesError ? <Error /> : favorites}
     </div>
   );
