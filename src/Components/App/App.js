@@ -6,7 +6,7 @@ import Favorites from '../Favorites/Favorites';
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
 
   const [favoriteReadings, setFavoriteReadings] = useState([])
 
