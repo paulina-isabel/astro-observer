@@ -32,6 +32,10 @@ const TodaysReading = ({ addToFavorites, favoriteReadings }) => {
   //   fetchData();
   // }, [selectedTimePeriod]);
 
+  const checkFavorites = (reading, favoriteReadings) => {
+    
+  }
+
   return (
     <div className='todays-reading'>
 

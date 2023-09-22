@@ -9,10 +9,17 @@ function App() {
 
   const [favoriteReadings, setFavoriteReadings] = useState([])
 
+  useEffect(() => {
+    const favorites = JSON.parse(window.localStorage.getItem('favoriteReadings'));
+    if (favorites) {
+      setFavoriteReadings(favorites);
+      console.log(favorites, 'there are stored favorites, set in useeffect')
+    }
+  }, []);
+
   const addToFavorites = (newReading) => {
     window.localStorage.setItem('favoriteReadings', JSON.stringify([...favoriteReadings, newReading]))
     setFavoriteReadings(JSON.parse(localStorage.favoriteReadings))
-  
   }
 
   // const removeFromFavorites = (reading) => {
