@@ -23,18 +23,19 @@ function App() {
     setFavoriteReadings(JSON.parse(localStorage.favoriteReadings))
   }
 
-  // const removeFromFavorites = (reading) => {
-  //   const filteredProducts = savedProducts.filter(oldProduct => oldProduct.id !== product.id)
-  //   window.localStorage.setItem('favoriteReadings', JSON.stringify(filteredProducts))
-  //   setSavedProducts(JSON.parse(localStorage.savedProducts))
-  // }
+  const removeFromFavorites = (reading) => {
+    const filteredReadings = favoriteReadings.filter(oldReading => oldReading !== reading)
+    console.log(filteredReadings, 'this is filtered readings in deleter function')
+    window.localStorage.setItem('favoriteReadings', JSON.stringify(filteredReadings))
+    setFavoriteReadings(JSON.parse(localStorage.favoriteReadings))
+  }
 
   return (
     <div className="App">
       <NavBar />
       <Routes>
         <Route path='/' element={<AllSigns />} />
-        <Route path='/:sign' element={<TodaysReading addToFavorites={addToFavorites} favoriteReadings={favoriteReadings}/>} />
+        <Route path='/:sign' element={<TodaysReading addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} favoriteReadings={favoriteReadings}/>} />
         <Route path='/favorites' element={<Favorites favoriteReadings={favoriteReadings} />} />
       </Routes>
     </div>

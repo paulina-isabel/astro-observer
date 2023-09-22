@@ -8,7 +8,7 @@ import favorite from '../.././images/favorite.png';
 import unfavorite from '../.././images/unfavorite.png';
 import getData from '../../apiCalls';
 
-const TodaysReading = ({ addToFavorites, favoriteReadings }) => {
+const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }) => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState('');
   const [reading, setReading] = useState('this is a test')
   
@@ -33,8 +33,10 @@ const TodaysReading = ({ addToFavorites, favoriteReadings }) => {
   // }, [selectedTimePeriod]);
 
   const checkFavorites = (reading, favoriteReadings) => {
-    
-  }
+    return favoriteReadings.includes(reading);
+  };
+
+  const isFavorite = checkFavorites(reading, favoriteReadings)
 
   return (
     <div className='todays-reading'>
@@ -71,7 +73,7 @@ const TodaysReading = ({ addToFavorites, favoriteReadings }) => {
           Your friendly, kind and noble nature brings people close to you. You won't have to take any great efforts to do this.The love and joy that you would see in your partner's eyes would make toda
           {reading}
         </p>
-        <img src={favorite} className='favorite-button' onClick={() => addToFavorites(reading)}/>
+        <img src={favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
       </div>
 
     </div>
