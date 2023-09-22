@@ -6,7 +6,7 @@ import Favorites from '../Favorites/Favorites';
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
 
   const [favoriteReadings, setFavoriteReadings] = useState([])
 
@@ -25,7 +25,6 @@ function App() {
 
   const removeFromFavorites = (reading) => {
     const filteredReadings = favoriteReadings.filter(oldReading => oldReading !== reading)
-    console.log(filteredReadings, 'this is filtered readings in deleter function')
     window.localStorage.setItem('favoriteReadings', JSON.stringify(filteredReadings))
     setFavoriteReadings(JSON.parse(localStorage.favoriteReadings))
   }

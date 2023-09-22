@@ -1,10 +1,15 @@
 import './Favorites.css';
 import { useEffect, useState } from 'react';
 import unfavorite from '../.././images/unfavorite.png';
+import Error from '../Error/Error';
 
 const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
 
-  console.log(favoriteReadings, 'favs in favs component')
+  const [favoritesError, setFavoritesError] = useState(false)
+
+  if (!favoriteReadings.length) {
+    setFavoritesError(true)
+  }
 
   const favorites = favoriteReadings.map((reading) => {
     return (
@@ -25,7 +30,7 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
 
   return (
     <div className="favorites-wrapper">
-      {favorites}
+      { favoritesError ? <Error /> : favorites}
     </div>
   );
 };
