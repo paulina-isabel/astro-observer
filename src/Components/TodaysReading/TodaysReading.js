@@ -84,7 +84,10 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
               {reading}
             </p>
             <img src={isFavorite ? unfavorite : favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
-          </div> : <p>Make a selection above to see your reading!</p> }
+          </div> 
+          : <p>
+              Make a selection above to see your reading!
+            </p>}
       </div>}
 
     </div>
