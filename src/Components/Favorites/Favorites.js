@@ -1,6 +1,21 @@
-const Favorites = () => {
+import './Favorites.css';
+
+const Favorites = ({ favoriteReadings }) => {
+
+  console.log(favoriteReadings, 'favs in favs component')
+
+  const favorites = favoriteReadings.map((reading) => {
+    return (
+      <div className="favorited-reading">
+        {reading}
+      </div>
+    )
+  })
+
   return (
-    <div>This will have favorites</div>
+    <div className="favorites-wrapper">
+      {favorites}
+    </div>
   );
 };
 
