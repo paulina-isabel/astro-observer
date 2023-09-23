@@ -11,7 +11,6 @@ import unfavorite from '../.././images/unfavorite.png';
 import getData from '../../apiCalls';
 
 import Error from '../Error/Error';
-import Selector from '../Selector/Selector';
 
 const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }) => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState('');
@@ -21,7 +20,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
   
   const { sign } = useParams();
 
-  function isValidSign(sign) {
+  function checkValidSign(sign) {
     const allowedSigns = [
       'Aries', 'Taurus', 'Gemini', 'Cancer',
       'Leo', 'Virgo', 'Libra', 'Scorpio',
@@ -42,7 +41,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
   const isFavorite = checkFavorites(reading, favoriteReadings)
 
   useEffect(() => {
-    isValidSign(sign)
+    checkValidSign(sign)
     const fetchData = async () => {
       try {
         if (selectedTimePeriod !== '' && validSign === true) {
@@ -59,40 +58,30 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
 
   return (
     <div>
-
-      {error ? <Error /> :
+      {error || !validSign ? <Error /> :
       <div className='todays-reading'>
-        
-{validSign ? 
-<div>
-        <h3>Select a Time Period to See Reading for {sign}:</h3>
-
-                  <div className='time-periods'>
-                    <img 
-                      src={today} 
-                      className='time-period-img' 
-                      alt='today'
-                      onClick={() => setSelectedTimePeriod('today')}
-                    />
-                    <img 
-                      src={yesterday} 
-                      className='time-period-img' 
-                      alt='yesterday'
-                      onClick={() => setSelectedTimePeriod('yesterday')}
-                    />
-                    <img 
-                      src={weekly} 
-                      className='time-period-img' 
-                      alt='weekly'
-                      onClick={() => setSelectedTimePeriod('weekly')}
-                    />
-                  </div> 
-</div>
-: <p>Nothing to see here, please go home and try again.</p>}
-        <h3>
-          {selectedTimePeriod}
-        </h3>
-        
+        <h2>Select a Time Period to See Reading for {sign}:</h2>
+          <div className='time-periods'>
+            <img 
+              src={today} 
+              className='time-period-img' 
+              alt='today'
+              onClick={() => setSelectedTimePeriod('today')}
+            />
+            <img 
+              src={yesterday} 
+              className='time-period-img' 
+              alt='yesterday'
+              onClick={() => setSelectedTimePeriod('yesterday')}
+            />
+            <img 
+              src={weekly} 
+              className='time-period-img' 
+              alt='weekly'
+              onClick={() => setSelectedTimePeriod('weekly')}
+            />
+          </div> 
+        <h3>{selectedTimePeriod}</h3>
         {reading.length ? 
           <div className='reading'>
             <p>
@@ -100,11 +89,8 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
             </p>
             <img src={isFavorite ? unfavorite : favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
           </div> 
-          : <p>
-              Make a selection above to see your reading!
-            </p>}
+          : <p>Make a selection above to see your reading!</p>}
       </div>}
-
     </div>
   )
 };
