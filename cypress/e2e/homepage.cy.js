@@ -95,7 +95,7 @@ describe('homepage user flow', () => {
   })
 
 
-  it.only('testing sad path - 400 level error', () => {
+  it('testing sad path - 400 level error', () => {
     cy.get('.signs-wrapper').children().last().click()
     cy.url().should('eq', 'http://localhost:3000/Pisces')
     cy.intercept("GET", 'https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=Pisces&timePeriod=yesterday', {
