@@ -24,6 +24,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
       try {
         const data = await getData(`https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=${sign}&timePeriod=${selectedTimePeriod}`);
         setReading(data.prediction)
+        console.log(reading)
       } catch (error) {
         if (error instanceof Error) {
           setError(true)

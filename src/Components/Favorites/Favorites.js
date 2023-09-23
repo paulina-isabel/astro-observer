@@ -7,9 +7,9 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
 
   console.log(favoriteReadings)
 
-  const favorites = favoriteReadings.map((reading) => {
+  const favorites = favoriteReadings.map((reading, index) => {
     return (
-      <div className="favorited-reading">
+      <div className="favorited-reading" key={index}>
         <p>
           {reading}
         </p>
