@@ -11,18 +11,41 @@ import unfavorite from '../.././images/unfavorite.png';
 import getData from '../../apiCalls';
 
 import Error from '../Error/Error';
+import Selector from '../Selector/Selector';
 
 const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }) => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState('');
   const [reading, setReading] = useState('')
   const [error, setError] = useState(false)
+  const [validSign, setValidSign] = useState('')
   
   const { sign } = useParams();
 
+  function isValidSign(sign) {
+    const allowedSigns = [
+      'Aries', 'Taurus', 'Gemini', 'Cancer',
+      'Leo', 'Virgo', 'Libra', 'Scorpio',
+      'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
+    ];
+  
+    if(allowedSigns.includes(sign)) {
+      setValidSign(true)
+    } else {
+      setValidSign(false)
+    }
+  }
+
+  const checkFavorites = (reading, favoriteReadings) => {
+    return favoriteReadings.includes(reading);
+  };
+
+  const isFavorite = checkFavorites(reading, favoriteReadings)
+
   useEffect(() => {
+    isValidSign(sign)
     const fetchData = async () => {
       try {
-        if (selectedTimePeriod !== '') {
+        if (selectedTimePeriod !== '' && validSign === true) {
           const data = await getData(`https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=${sign}&timePeriod=${selectedTimePeriod}`);
           setReading(data.prediction);
         }
@@ -34,18 +57,14 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
     fetchData();
   }, [selectedTimePeriod]);
 
-  const checkFavorites = (reading, favoriteReadings) => {
-    return favoriteReadings.includes(reading);
-  };
-
-  const isFavorite = checkFavorites(reading, favoriteReadings)
-
   return (
     <div>
 
       {error ? <Error /> :
       <div className='todays-reading'>
-
+        
+{validSign ? 
+<div>
         <h3>Select a Time Period to See Reading for {sign}:</h3>
 
                   <div className='time-periods'>
@@ -67,8 +86,9 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
                       alt='weekly'
                       onClick={() => setSelectedTimePeriod('weekly')}
                     />
-                  </div>
-
+                  </div> 
+</div>
+: <p>Nothing to see here, please go home and try again.</p>}
         <h3>
           {selectedTimePeriod}
         </h3>
