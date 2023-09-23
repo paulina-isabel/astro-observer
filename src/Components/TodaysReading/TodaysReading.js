@@ -1,26 +1,23 @@
 import './TodaysReading.css'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
 import today from '../.././images/today.png';
 import yesterday from '../.././images/yesterday.png';
 import weekly from '../.././images/weekly.png';
 import favorite from '../.././images/favorite.png';
 import unfavorite from '../.././images/unfavorite.png';
-
 import getData from '../../apiCalls';
-
 import Error from '../Error/Error';
 
 const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }) => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState('');
-  const [reading, setReading] = useState('')
-  const [error, setError] = useState(false)
-  const [validSign, setValidSign] = useState('')
+  const [reading, setReading] = useState('');
+  const [error, setError] = useState(false);
+  const [validSign, setValidSign] = useState('');
   
   const { sign } = useParams();
 
-  function checkValidSign(sign) {
+  const checkValidSign = (sign) => {
     const allowedSigns = [
       'Aries', 'Taurus', 'Gemini', 'Cancer',
       'Leo', 'Virgo', 'Libra', 'Scorpio',

@@ -1,12 +1,7 @@
 import './Favorites.css';
-import { useEffect, useState } from 'react';
 import unfavorite from '../.././images/unfavorite.png';
-import Error from '../Error/Error';
 
 const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
-
-  console.log(favoriteReadings)
-
   const favorites = favoriteReadings.map((reading, index) => {
     return (
       <div className="favorited-reading" key={index}>
@@ -21,8 +16,8 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
           }
         }/>
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <>
