@@ -1,4 +1,4 @@
-import './TodaysReading.css'
+import './TodaysReading.css';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import today from '../.././images/today.png';
@@ -29,17 +29,17 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
       setValidSign(true)
     } else {
       setValidSign(false)
-    }
-  }
+    };
+  };
 
   const checkFavorites = (reading, favoriteReadings) => {
     return favoriteReadings.includes(reading);
   };
 
-  const isFavorite = checkFavorites(reading, favoriteReadings)
+  const isFavorite = checkFavorites(reading, favoriteReadings);
 
   useEffect(() => {
-    checkValidSign(sign)
+    checkValidSign(sign);
     const fetchData = async () => {
       try {
         if (selectedTimePeriod !== '' && validSign === true) {
@@ -56,8 +56,9 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
 
   return (
     <div>
-      {error || !validSign ? <Error /> :
-      <div className='todays-reading'>
+      {error || !validSign ? 
+        <Error /> 
+      : <div className='todays-reading'>
         <h2>Select a Time Period to See Reading for {sign}:</h2>
           <div className='time-periods'>
             <img 
@@ -87,7 +88,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
             </p>
             <img src={isFavorite ? unfavorite : favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
           </div> 
-          : <p>Make a selection above to see your reading!</p>}
+        : <p>Make a selection above to see your reading!</p>}
       </div>}
     </div>
   )

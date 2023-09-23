@@ -17,4 +17,4 @@ export default SignCard;
 SignCard.propTypes = {
   image: PropTypes.string,
   signName: PropTypes.string
-}
+};
