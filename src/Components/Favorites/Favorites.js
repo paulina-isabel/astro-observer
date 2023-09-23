@@ -1,12 +1,8 @@
 import './Favorites.css';
-import { useEffect, useState } from 'react';
 import unfavorite from '../.././images/unfavorite.png';
-import Error from '../Error/Error';
+import PropTypes from 'prop-types';
 
 const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
-
-  console.log(favoriteReadings)
-
   const favorites = favoriteReadings.map((reading, index) => {
     return (
       <div className="favorited-reading" key={index}>
@@ -21,8 +17,8 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
           }
         }/>
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <>
@@ -35,3 +31,8 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
 };
 
 export default Favorites;
+
+Favorites.propTypes = {
+  favoriteReadings: PropTypes.arrayOf(PropTypes.string),
+  removeFromFavorites: PropTypes.func.isRequired
+};

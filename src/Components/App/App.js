@@ -8,8 +8,7 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
-
-  const [favoriteReadings, setFavoriteReadings] = useState([])
+  const [favoriteReadings, setFavoriteReadings] = useState([]);
 
   useEffect(() => {
     const favorites = JSON.parse(window.localStorage.getItem('favoriteReadings'));
@@ -19,15 +18,15 @@ const App = () => {
   }, []);
 
   const addToFavorites = (newReading) => {
-    window.localStorage.setItem('favoriteReadings', JSON.stringify([...favoriteReadings, newReading]))
-    setFavoriteReadings(JSON.parse(localStorage.favoriteReadings))
-  }
+    window.localStorage.setItem('favoriteReadings', JSON.stringify([...favoriteReadings, newReading]));
+    setFavoriteReadings(JSON.parse(localStorage.favoriteReadings));
+  };
 
   const removeFromFavorites = (reading) => {
-    const filteredReadings = favoriteReadings.filter(oldReading => oldReading !== reading)
-    window.localStorage.setItem('favoriteReadings', JSON.stringify(filteredReadings))
-    setFavoriteReadings(JSON.parse(localStorage.favoriteReadings))
-  }
+    const filteredReadings = favoriteReadings.filter(oldReading => oldReading !== reading);
+    window.localStorage.setItem('favoriteReadings', JSON.stringify(filteredReadings));
+    setFavoriteReadings(JSON.parse(localStorage.favoriteReadings));
+  };
 
   return (
     <div className="App">
@@ -39,7 +38,7 @@ const App = () => {
         <Route path='/*' element={<Error />} />
       </Routes>
     </div>
-  )
-}
+  );
+};
 
 export default App;
