@@ -25,10 +25,6 @@ describe('homepage user flow', () => {
   })
 
   it('should display a reading for the selected sign & time period', () => {
-    cy.intercept("GET", 'https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=Pisces&timePeriod=', {
-      statusCode: 200,
-      fixture: `.././fixtures/empty.json`
-    })
     cy.get('.signs-wrapper').children().last().click()
     cy.url().should('eq', 'http://localhost:3000/Pisces')
     cy.get('.navbar').within(() => {
@@ -63,10 +59,6 @@ describe('homepage user flow', () => {
     cy.contains('h2', 'Favorite Readings')
     cy.get('.favorited-reading').contains('Your irresistible sense of humor makes you very popular among friends and others you meet today. It would also enthuse people who you work with.You will feel inactive and exhausted today. This is a total contrast to your active true self. Also you\'ll get easily agitated today.You have such a cautious nature that you become very suspicious of people, their motives, situations, etc. You will end up analyzing everything before you make any commitments which might work in your favor today.You will be happy and energetic today. You\'ll feel as if you could take on any challenges. Your joy would be very infectious making others you meet also happy.Meditation will help you deal with the stress and tension that you suffer from. The stress would also take away your physical strength and stamina.')
     cy.get('.header').click()
-    cy.intercept("GET", 'https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=Aries&timePeriod=', {
-      statusCode: 200,
-      fixture: `.././fixtures/empty.json`
-    })
     cy.url().should('eq', 'http://localhost:3000/')
     cy.get('.signs-wrapper').children().first().click()
     cy.url().should('eq', 'http://localhost:3000/Aries')
@@ -91,8 +83,26 @@ describe('homepage user flow', () => {
     cy.contains('p', 'Add a reading to your favorites to see it here')
   })
 
-  it.only('testing sad paths', () => {
+  it('testing sad path - 500 level error', () => {
     cy.get('.signs-wrapper').children().last().click()
     cy.url().should('eq', 'http://localhost:3000/Pisces')
+    cy.intercept("GET", 'https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=Pisces&timePeriod=yesterday', {
+      statusCode: 500,
+      fixture: `.././fixtures/pisces-yesterday.json`
+    })
+    cy.get('img[alt="yesterday"]').click()
+    cy.contains('.App > :nth-child(2) > div', 'Sorry, something went wrong. Please go home and try again.')
+  })
+
+
+  it.only('testing sad path - 400 level error', () => {
+    cy.get('.signs-wrapper').children().last().click()
+    cy.url().should('eq', 'http://localhost:3000/Pisces')
+    cy.intercept("GET", 'https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=Pisces&timePeriod=yesterday', {
+      statusCode: 404,
+      fixture: `.././fixtures/pisces-yesterday.json`
+    })
+    cy.get('img[alt="yesterday"]').click()
+    cy.contains('.App > :nth-child(2) > div', 'Sorry, something went wrong. Please go home and try again.')
   })
 })

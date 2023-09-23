@@ -22,15 +22,12 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (selectedTimePeriod !== '') { // Check if selectedTimePeriod is not empty
+        if (selectedTimePeriod !== '') {
           const data = await getData(`https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=${sign}&timePeriod=${selectedTimePeriod}`);
           setReading(data.prediction);
-          console.log(reading);
         }
       } catch (error) {
-        if (error instanceof Error) {
           setError(true)
-        }
       }
     };
 
