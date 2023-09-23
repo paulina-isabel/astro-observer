@@ -1,3 +1,15 @@
 .header {
   height: 100px;
 }
+
+.navbar {
+  position: relative;
+}
+
+.favorites-page-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-right: 60px;
+  padding-top: 30px;
+}

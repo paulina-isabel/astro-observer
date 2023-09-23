@@ -10,32 +10,29 @@ import unfavorite from '../.././images/unfavorite.png';
 
 import getData from '../../apiCalls';
 
-import ReadingCard from '../ReadingCard/ReadingCard';
 import Error from '../Error/Error';
 
 const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }) => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState('');
   const [reading, setReading] = useState('')
   const [error, setError] = useState(false)
+  const [validSign, setValidSign] = useState('')
   
   const { sign } = useParams();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getData(`https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=${sign}&timePeriod=${selectedTimePeriod}`);
-        console.log(data.prediction)
-        setReading(data.prediction)
-      } catch (error) {
-        if (error instanceof Error) {
-          console.log('there was an error');
-          setError(true)
-        }
-      }
-    };
-
-    fetchData();
-  }, [selectedTimePeriod]);
+  function checkValidSign(sign) {
+    const allowedSigns = [
+      'Aries', 'Taurus', 'Gemini', 'Cancer',
+      'Leo', 'Virgo', 'Libra', 'Scorpio',
+      'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
+    ];
+  
+    if(allowedSigns.includes(sign)) {
+      setValidSign(true)
+    } else {
+      setValidSign(false)
+    }
+  }
 
   const checkFavorites = (reading, favoriteReadings) => {
     return favoriteReadings.includes(reading);
@@ -43,41 +40,48 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
 
   const isFavorite = checkFavorites(reading, favoriteReadings)
 
-  console.log(reading)
+  useEffect(() => {
+    checkValidSign(sign)
+    const fetchData = async () => {
+      try {
+        if (selectedTimePeriod !== '' && validSign === true) {
+          const data = await getData(`https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=${sign}&timePeriod=${selectedTimePeriod}`);
+          setReading(data.prediction);
+        }
+      } catch (error) {
+          setError(true)
+      }
+    };
+
+    fetchData();
+  }, [selectedTimePeriod]);
 
   return (
     <div>
-
-      {error ? <Error /> :
+      {error || !validSign ? <Error /> :
       <div className='todays-reading'>
-
-        <h3>Select a Time Period to See Reading for {sign}:</h3>
-
-                  <div className='time-periods'>
-                    <img 
-                      src={today} 
-                      className='time-period-img' 
-                      alt='today'
-                      onClick={() => setSelectedTimePeriod('today')}
-                    />
-                    <img 
-                      src={yesterday} 
-                      className='time-period-img' 
-                      alt='yesterday'
-                      onClick={() => setSelectedTimePeriod('yesterday')}
-                    />
-                    <img 
-                      src={weekly} 
-                      className='time-period-img' 
-                      alt='weekly'
-                      onClick={() => setSelectedTimePeriod('weekly')}
-                    />
-                  </div>
-
-        <h3>
-          {selectedTimePeriod}
-        </h3>
-        
+        <h2>Select a Time Period to See Reading for {sign}:</h2>
+          <div className='time-periods'>
+            <img 
+              src={today} 
+              className='time-period-img' 
+              alt='today'
+              onClick={() => setSelectedTimePeriod('today')}
+            />
+            <img 
+              src={yesterday} 
+              className='time-period-img' 
+              alt='yesterday'
+              onClick={() => setSelectedTimePeriod('yesterday')}
+            />
+            <img 
+              src={weekly} 
+              className='time-period-img' 
+              alt='weekly'
+              onClick={() => setSelectedTimePeriod('weekly')}
+            />
+          </div> 
+        <h3>{selectedTimePeriod}</h3>
         {reading.length ? 
           <div className='reading'>
             <p>
@@ -85,11 +89,8 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
             </p>
             <img src={isFavorite ? unfavorite : favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
           </div> 
-          : <p>
-              Make a selection above to see your reading!
-            </p>}
+          : <p>Make a selection above to see your reading!</p>}
       </div>}
-
     </div>
   )
 };

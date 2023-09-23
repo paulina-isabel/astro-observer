@@ -3,6 +3,7 @@ import NavBar from '../NavBar/NavBar';
 import AllSigns from '../AllSigns/AllSigns';
 import TodaysReading from '../TodaysReading/TodaysReading';
 import Favorites from '../Favorites/Favorites';
+import Error from '../Error/Error';
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -14,7 +15,6 @@ const App = () => {
     const favorites = JSON.parse(window.localStorage.getItem('favoriteReadings'));
     if (favorites) {
       setFavoriteReadings(favorites);
-      console.log(favorites, 'there are stored favorites, set in useeffect')
     }
   }, []);
 
@@ -36,6 +36,7 @@ const App = () => {
         <Route path='/' element={<AllSigns />} />
         <Route path='/:sign' element={<TodaysReading addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} favoriteReadings={favoriteReadings}/>} />
         <Route path='/favorites' element={<Favorites favoriteReadings={favoriteReadings} removeFromFavorites={removeFromFavorites}/>} />
+        <Route path='/*' element={<Error />} />
       </Routes>
     </div>
   )

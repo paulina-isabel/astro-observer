@@ -1,6 +1,8 @@
 .favorited-reading {
   width: 50vw;
   background-color: #f4e6fc;
+  padding: 5px;
+  margin: 20px;
 }
 
 .favorites-wrapper {

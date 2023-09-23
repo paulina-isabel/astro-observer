@@ -5,15 +5,11 @@ import Error from '../Error/Error';
 
 const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
 
-  const [favoritesError, setFavoritesError] = useState(false)
+  console.log(favoriteReadings)
 
-  if (!favoriteReadings.length) {
-    setFavoritesError(true)
-  }
-
-  const favorites = favoriteReadings.map((reading) => {
+  const favorites = favoriteReadings.map((reading, index) => {
     return (
-      <div className="favorited-reading">
+      <div className="favorited-reading" key={index}>
         <p>
           {reading}
         </p>
@@ -29,9 +25,12 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
   })
 
   return (
-    <div className="favorites-wrapper">
-      { favoritesError ? <Error /> : favorites}
-    </div>
+    <>
+      <h2>Favorite Readings</h2>
+      <div className="favorites-wrapper">
+        {favoriteReadings.length ? favorites : <p>Add a reading to your favorites to see it here</p>}
+      </div>
+    </>
   );
 };
 

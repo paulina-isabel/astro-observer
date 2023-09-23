@@ -1,6 +1,7 @@
 import './NavBar.css';
 import headerimg from '../../images/astroobserver.png';
 import { Link } from 'react-router-dom';
+import unfavorite from '../.././images/unfavorite.png';
 
 const NavBar = () => {
   return (
@@ -9,7 +10,7 @@ const NavBar = () => {
         <img src={headerimg} alt='title' className='header'/>
       </Link>
       <Link to={'/favorites'}>
-        favorites page
+        <img src={unfavorite} alt='favorites page' className='favorites-page-icon'/>
       </Link>
     </div>
   );

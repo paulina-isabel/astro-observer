@@ -1,7 +1,5 @@
 const handleError = (response) => {
   if(!response.ok) {
-    console.log('there was an error')
-    console.log(response, 'error response')
     throw new Error(`Error: ${response.status} -- Please refresh the page or go back home.`)
   }
   return response.json()
