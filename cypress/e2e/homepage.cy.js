@@ -3,12 +3,12 @@ describe('homepage user flow', () => {
     cy.visit('localhost:3000')
   })
 
-  // const interceptSignCall = (status, sign, timePeriod, fixture) => {
-  //   cy.intercept("GET", `https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=${sign}&timePeriod=${timePeriod}`, {
-  //     statusCode: status,
-  //     fixture: `.././fixtures/${fixture}`
-  //   })
-  // }
+  const interceptSignCall = (status, sign, timePeriod, fixture) => {
+    cy.intercept("GET", `https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=${sign}&timePeriod=${timePeriod}`, {
+      statusCode: status,
+      fixture: `.././fixtures/${fixture}`
+    }).as('horoscopeRequest')
+  }
 
   it('should display all twelve zodiac cards on landing page', () => {
     cy.url().should('eq', 'http://localhost:3000/')
@@ -24,7 +24,7 @@ describe('homepage user flow', () => {
       .should('have.length', 12)
   })
 
-  it.only('should display a reading for the selected sign & time period', () => {
+  it('should display a reading for the selected sign & time period', () => {
     cy.intercept("GET", 'https://daily-horoscope-api.p.rapidapi.com/api/Daily-Horoscope-English/?zodiacSign=Pisces&timePeriod=', {
       statusCode: 200,
       fixture: `.././fixtures/empty.json`
@@ -87,5 +87,12 @@ describe('homepage user flow', () => {
     cy.get(':nth-child(1) > .favorite-button').click()
     cy.get('.favorites-wrapper').children()
       .should('have.length', 1)
+    cy.get(':nth-child(1) > .favorite-button').click()
+    cy.contains('p', 'Add a reading to your favorites to see it here')
+  })
+
+  it.only('testing sad paths', () => {
+    cy.get('.signs-wrapper').children().last().click()
+    cy.url().should('eq', 'http://localhost:3000/Pisces')
   })
 })
