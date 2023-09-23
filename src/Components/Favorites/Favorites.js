@@ -25,10 +25,12 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
   })
 
   return (
-    <div className="favorites-wrapper">
+    <>
       <h2>Favorite Readings</h2>
-      {favoriteReadings.length ? favorites : <p>Add a reading to your favorites to see it here</p>}
-    </div>
+      <div className="favorites-wrapper">
+        {favoriteReadings.length ? favorites : <p>Add a reading to your favorites to see it here</p>}
+      </div>
+    </>
   );
 };
 
