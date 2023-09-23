@@ -8,6 +8,7 @@ import favorite from '../.././images/favorite.png';
 import unfavorite from '../.././images/unfavorite.png';
 import getData from '../../apiCalls';
 import Error from '../Error/Error';
+import PropTypes from 'prop-types';
 
 const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }) => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState('');
@@ -93,3 +94,9 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
 };
 
 export default TodaysReading;
+
+TodaysReading.propTypes = {
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired,
+  favoriteReadings: PropTypes.arrayOf(PropTypes.string)
+};

@@ -1,5 +1,6 @@
 import './Favorites.css';
 import unfavorite from '../.././images/unfavorite.png';
+import PropTypes from 'prop-types';
 
 const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
   const favorites = favoriteReadings.map((reading, index) => {
@@ -30,3 +31,8 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
 };
 
 export default Favorites;
+
+Favorites.propTypes = {
+  favoriteReadings: PropTypes.arrayOf(PropTypes.string),
+  removeFromFavorites: PropTypes.func.isRequired
+};
