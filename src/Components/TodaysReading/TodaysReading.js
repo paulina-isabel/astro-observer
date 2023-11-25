@@ -52,7 +52,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
     };
 
     fetchData();
-  }, [selectedTimePeriod]);
+  }, [selectedTimePeriod, sign, validSign]);
 
   return (
     <div>
@@ -86,7 +86,7 @@ const TodaysReading = ({ addToFavorites, removeFromFavorites, favoriteReadings }
             <p>
               {reading}
             </p>
-            <img src={isFavorite ? unfavorite : favorite} className='favorite-button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
+            <img src={isFavorite ? unfavorite : favorite} className='favorite-button' alt='favorite button' onClick={isFavorite ? () => removeFromFavorites(reading) : () => addToFavorites(reading)}/>
           </div> 
         : <p>Make a selection above to see your reading!</p>}
       </div>}

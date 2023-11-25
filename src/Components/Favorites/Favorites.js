@@ -12,6 +12,7 @@ const Favorites = ({ favoriteReadings, removeFromFavorites }) => {
         <img 
           src={unfavorite} 
           className='favorite-button' 
+          alt='favorite button'
           onClick={() => {
             removeFromFavorites(reading)
           }
