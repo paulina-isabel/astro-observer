@@ -10,4 +10,5 @@
   flex-wrap: wrap;
   width: 50vw;
   align-items: center;
+  justify-content: center;
 }
